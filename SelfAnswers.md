@@ -9,5 +9,5 @@ TDD in short  is more of a write tests before the code kind of approach which he
 
 `Mention three types of automated tests` =>
 
-first and most used we have Unit testing,
-then  Smoke testing and the 3rd one snapshot testing
+The first and most used type of testing is Unit testing,
+then  Smoke testing and the 3rd one Snapshot testing

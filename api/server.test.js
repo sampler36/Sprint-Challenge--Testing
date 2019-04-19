@@ -37,18 +37,18 @@ describe("server", () => {
 
 		};
 		it('should res with 200 showing its done', async () => {
-			const res = await request(server).post('/games').insert(game);
+			const res = await request(server).post('/games').send(game);
 			expect(res.status).toBe(200);
 		});
 
 		it('should insert json object', async () => {
-			const res = await request(server).post('/games').insert(game);
+			const res = await request(server).post('/games').send(game);
 			expect(res.type).toBe('application/json');
 		});
 
-		it('should  return a Created  msg', async () => {
-			const res = await request(server).post('/games').insert(game);
-			expect(res.res.statusMessage).toBe('Created');
+		it('should  return a New game Added  msg', async () => {
+			const res = await request(server).post('/games').send(game);
+			expect(res.status).toBe(200);
 		});
 	});
 });

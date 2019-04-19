@@ -16,20 +16,15 @@ server.get('/games', async (req, res) => {
   res.status(200).json(rows);
 });
 
-server.post('/games', async (req, res) => {
-  const { title, genre } = req.body;
-
-  if (title && genre) {
-    try {
-      res.status(200).json({
-         message: 'New game Added my friend' });
-    } catch (error) {
-      res.status(500).json({ error });
-    }
+server.post("/games", (req, res) => {
+  const game = req.body;
+  if (!game.title || !game.genre) {
+    res.status(405).json({ message: "Not Allowed change Entry!" });
   } else {
-    res.status(405).json({ 
-      message: 'Point of entry not allowed' });
+    games.insert(game);
+    res.status(200).json({ message: "New game Added" });
   }
 });
+
 
 module.exports = server;
