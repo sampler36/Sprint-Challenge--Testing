@@ -34,9 +34,6 @@ describe("server", () => {
     beforeEach(async () => {
       await database("games").truncate();
     });
-    afterEach(async () => {
-      await database("games").truncate();
-    });
     const game = {
       title: "Temple Run",
       genre: "Mobile "
