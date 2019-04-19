@@ -56,7 +56,7 @@ describe("server", () => {
       const res = await request(server)
         .post("/games")
         .send(game);
-      expect(res.status).toBe(200);
+      expect(res.body.message).toEqual('New game Added');
     });
   });
 });
