@@ -16,4 +16,20 @@ server.get('/games', async (req, res) => {
   res.status(200).json(rows);
 });
 
+server.post('/games', async (req, res) => {
+  const { title, genre } = req.body;
+
+  if (title && genre) {
+    try {
+      res.status(200).json({
+         message: 'New game Added my friend' });
+    } catch (error) {
+      res.status(500).json({ error });
+    }
+  } else {
+    res.status(405).json({ 
+      message: 'Point of entry not allowed' });
+  }
+});
+
 module.exports = server;
