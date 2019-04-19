@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Testing Sprint Challenge",
   "main": "index.js",
-  "scripts": {
+  "scripts":  {
     "test": "jest",
     "start": "nodemon index.js",
     "initdb": "knex init",
