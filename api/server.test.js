@@ -3,6 +3,7 @@ const request = require("supertest");
 const server = require("./server");
 
 describe("server", () => {
+
     it("should set the testing env", () => {
         expect(process.env.DB_ENV).toBe("testing");
     });
@@ -29,26 +30,25 @@ describe("server", () => {
         });
     });
 
-    // POST
-    describe(" endpoint", () => {
-        it("should return with 405 swhen the body dont match", () => {
-            return request(server)
-                .post("/games")
-                .send({
-                    title: "Pacman",
-                    genr: "Arcade"
-                })
-                .expect(405);
-        });
+	describe('POST /', () => {
+		const game = {
+			title: 'Temple Run',
+			genre: 'Mobile '
 
-        it("Return 200 if everything matches", () => {
-            return request(server)
-                .post("/games")
-                .send({
-                    title: "Pacman",
-                    genre: "Arcade"
-                })
-                .expect(200);
-        });
-    });
+		};
+		it('should res with 200 showing its done', async () => {
+			const res = await request(server).post('/games').insert(game);
+			expect(res.status).toBe(200);
+		});
+
+		it('should insert json object', async () => {
+			const res = await request(server).post('/games').insert(game);
+			expect(res.type).toBe('application/json');
+		});
+
+		it('should  return a Created  msg', async () => {
+			const res = await request(server).post('/games').insert(game);
+			expect(res.res.statusMessage).toBe('Created');
+		});
+	});
 });
