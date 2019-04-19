@@ -30,6 +30,28 @@ describe("server", () => {
     });
   });
 
+  describe("GET /", () => {
+    it("should return 200", () => {
+      return request(server)
+        .get("/games")
+        .then((res) => {
+          expect(res.status).toBe(200);
+        });
+    });
+    it("should return 200 with an async", async () => {
+      const res = await request(server).get("/games");
+      expect(res.status).toBe(200);
+    });
+    it("should return JSON with an async", async () => {
+      const res = await request(server).get("/games");
+      expect(res.type).toBe("application/json");
+    });
+    it('should return the number of items in games', async () => {
+        const res = await request(server).get('/games');
+        expect(res.body).toHaveLength(3);
+  });
+});
+
   describe("POST /", () => {
     beforeEach(async () => {
       await database("games").truncate();
