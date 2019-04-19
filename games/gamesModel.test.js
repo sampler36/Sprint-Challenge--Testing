@@ -15,5 +15,22 @@ describe(' model', () => {
         })
 
     })
+//     describe('delete', () => {
+//         afterEach(async () => {
+//             await db('games').truncate();
+//     });
+// 		it('should delete the given game out the db', async () => {
+//             const newgame = await game.insert({ title: 'Lost Ark', genre:'Tactical RPG' });
+//                // removes the added game 
+//             const deleteGame = await game.remove(1);
+            
+//           //shows all the left out  games which is 0 
+//             const games = await db('games');
+           
+//              //count the number of games and calculate the length
+// 			expect(games).toHaveLength(0);
+// 		});
 
+// });
+    
 })

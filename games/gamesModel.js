@@ -20,7 +20,9 @@ async function update(id, changes) {
 }
 
 function remove(id) {
-  return null;
+    return db('games')
+    .where({ id })
+    .del();
 }
 
 function getAll() {
